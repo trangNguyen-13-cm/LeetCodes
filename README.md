@@ -2,7 +2,7 @@
 
 Kho lưu trữ lời giải LeetCode của mình, kèm ghi chú về cách tiếp cận và độ phức tạp.
 
-> **Username LeetCode:** [TrangNgT](https://leetcode.com/u/kEtUgh1uWe/)
+> **Username LeetCode:** [your-username](https://leetcode.com/u/your-username/)
 
 > 🤖 Các phần có marker `<!-- ...:START/END -->` được **tự động sinh** bởi `scripts/update_readme.py`. Đừng sửa tay trong các khối đó.
 
@@ -24,21 +24,23 @@ Kho lưu trữ lời giải LeetCode của mình, kèm ghi chú về cách tiế
 
 ## 📁 Cấu trúc thư mục
 
+Bài giải được đồng bộ bằng LeetSync:
+
 ```
 .
 ├── README.md
 ├── scripts/update_readme.py
 ├── .github/workflows/update-readme.yml
-├── easy/
-│   └── 0001-two-sum/
-│       ├── solution.py
-│       ├── solution.cpp      # thêm ngôn ngữ khác: chỉ cần thêm file
-│       └── notes.md          # (tuỳ chọn)
-├── medium/
-└── hard/
+├── 1-two-sum/
+│   ├── two-sum.py         # lời giải do LeetSync đẩy lên
+│   └── README.md          # đề bài do LeetSync tạo
+├── 15-3sum/
+│   ├── 3sum.py
+│   └── 3sum.cpp           # thêm ngôn ngữ khác: tự được nhận diện
+└── ...
 ```
 
-**Quy ước:** thư mục `<số-4-chữ-số>-<slug-trên-leetcode>`, file lời giải `solution.<đuôi>`.
+Script nhận diện cả thư mục `1-two-sum` lẫn `0001-two-sum`, ở thư mục gốc hoặc trong `easy/`, `medium/`, `hard/`.
 
 ---
 
@@ -60,23 +62,13 @@ Kho lưu trữ lời giải LeetCode của mình, kèm ghi chú về cách tiế
 
 ## ➕ Cách thêm bài mới
 
-1. Tạo thư mục, ví dụ `easy/0001-two-sum/`, rồi thêm file `solution.py` (hoặc `.cpp`, `.java`, ...).
-2. Ghi **comment đầu file** theo mẫu bên dưới để script đọc được thông tin.
-3. Commit và push:
+1. Giải bài trên LeetCode và bấm **Submit**. Khi bài được Accepted, LeetSync tự đẩy lên GitHub.
+2. GitHub Actions tự chạy `scripts/update_readme.py` và commit lại README này.
+3. Trước khi giải bài tiếp, nhớ `git pull` nếu bạn đang làm việc trên máy.
 
-```bash
-git add .
-git commit -m "feat: add 0001 Two Sum (Easy)"
-git push origin main
-```
+Chạy thủ công trên máy: `python scripts/update_readme.py` (thêm `--offline` nếu không muốn gọi LeetCode API).
 
-GitHub Actions sẽ tự chạy script và cập nhật README. Muốn cập nhật ngay trên máy:
-
-```bash
-python scripts/update_readme.py
-```
-
-### Mẫu comment đầu file
+**Độ khó và chủ đề** được lấy từ `README.md` của bài do LeetSync tạo, hoặc từ LeetCode API và lưu cache trong `.leetcode_cache.json`. Muốn ghi đè hoặc bổ sung `Chủ đề`, `Time`, `Space`, thêm comment ở đầu file lời giải:
 
 ```python
 """
@@ -86,17 +78,6 @@ Time: O(n)
 Space: O(n)
 """
 ```
-
-```cpp
-/*
- * LeetCode #1 - Two Sum
- * Chủ đề: Array, Hash Table
- * Time: O(n)
- * Space: O(n)
- */
-```
-
-Với `//` hoặc `#` cũng được, miễn là có các dòng `LeetCode #<số> - <tên>`, `Chủ đề:`, `Time:`, `Space:` trong 40 dòng đầu.
 
 ### Quy ước commit
 
