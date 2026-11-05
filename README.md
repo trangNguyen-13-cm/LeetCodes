@@ -2,7 +2,7 @@
 
 Kho lưu trữ lời giải LeetCode của mình, kèm ghi chú về cách tiếp cận và độ phức tạp.
 
-> **Username LeetCode:** [your-username](https://leetcode.com/u/your-username/)
+> **Username LeetCode:** [TrangNgT](https://leetcode.com/u/kEtUgh1uWe/)
 
 > 🤖 Các phần có marker `<!-- ...:START/END -->` được **tự động sinh** bởi `scripts/update_readme.py`. Đừng sửa tay trong các khối đó.
 
