@@ -103,3 +103,19 @@ Space: O(n)
 - [NeetCode Roadmap](https://neetcode.io/roadmap)
 - [Blind 75](https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions)
 - [LeetCode Patterns](https://seanprashad.com/leetcode-patterns/)
+
+<!---LeetCode Topics Start-->
+# LeetCode Topics
+## Hash Table
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0013-roman-to-integer](https://github.com/trangNguyen-13-cm/LeetCodes/tree/main/0013-roman-to-integer/) | Easy |
+## Math
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0013-roman-to-integer](https://github.com/trangNguyen-13-cm/LeetCodes/tree/main/0013-roman-to-integer/) | Easy |
+## String
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0013-roman-to-integer](https://github.com/trangNguyen-13-cm/LeetCodes/tree/main/0013-roman-to-integer/) | Easy |
+<!---LeetCode Topics End-->
