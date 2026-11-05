@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Tự động cập nhật README.md từ các thư mục bài giải LeetCode (tương thích LeetSync).
+Tự động cập nhật README.md từ các thư mục bài giải LeetCode (tương thích LeetHub / LeetSync).
 
 Script tự tìm mọi thư mục có dạng <số>-<slug> (vd: 1-two-sum, 0001-two-sum),
 ở thư mục gốc hoặc nằm trong easy/ medium/ hard/ hay bất kỳ thư mục con nào.
 
 Thông tin từng bài được lấy theo thứ tự ưu tiên:
     1. Comment đầu file lời giải (Title / Chủ đề / Time / Space)
-    2. README.md của bài (do LeetSync tạo): tên bài, độ khó
+    2. README.md của bài (do LeetHub/LeetSync tạo): tên bài, độ khó
     3. LeetCode GraphQL (tuỳ chọn, có cache): độ khó, chủ đề, tên bài
 
 Cách dùng:
@@ -81,6 +81,14 @@ def read_text(path: Path, limit: int = 3000) -> str:
         return ""
 
 
+def find_ci(folder: Path, name: str):
+    """Tìm file không phân biệt hoa thường (LeetHub tạo NOTES.md, README.md)."""
+    for p in folder.iterdir():
+        if p.is_file() and p.name.lower() == name:
+            return p
+    return None
+
+
 def rel(path: Path) -> str:
     return "./" + quote(path.relative_to(ROOT).as_posix())
 
@@ -136,8 +144,8 @@ def parse_problem(folder: Path, cache: dict, online: bool):
         "space": "",
         "folder": folder,
         "langs": {},
-        "statement": folder / "README.md" if (folder / "README.md").exists() else None,
-        "notes": folder / "notes.md" if (folder / "notes.md").exists() else None,
+        "statement": find_ci(folder, "readme.md"),
+        "notes": find_ci(folder, "notes.md"),
     }
     for part in folder.relative_to(ROOT).parts[:-1]:
         if part.lower() in DIFFICULTIES:
